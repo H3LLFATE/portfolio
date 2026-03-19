@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Sakura Essence Omakase</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="loading">
+    
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <div class="music-toggle" id="musicToggle">
+        <div class="bars">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <span>BGM</span>
+    </div>
+    <!-- Hidden ambient audio -->
+    <audio id="ambientMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/01/21/audio_3101859c03.mp3?filename=japanese-koto-106511.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader-logo">Sakura Essence</div>
+        <div class="loader-line"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand">SAKURA ESSENCE</a>
+            
+            <div class="menu-btn" id="menuBtn">
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="">Home</a>
+                <a href="menu.html" class="active">Menu</a>
+                <a href="reservation.html" class="">Reservation</a>
+                <a href="gallery.html" class="">Gallery</a>
+                <a href="about.html" class="">About</a>
+                <a href="contact.html" class="">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-wrapper">
+        
+        <section class="page-header">
+            <div class="container">
+                <h1 class="display-text reveal-up">The Menu</h1>
+                <p class="text-lead reveal-up delay-1">A curated 20-course experience altering daily with the seasons.</p>
+            </div>
+        </section>
+
+        <section class="section menu-section">
+            <div class="container">
+                <!-- Appetizers -->
+                <div class="menu-category reveal-up">
+                    <h2 class="category-title">Appetizers<span>01</span></h2>
+                    <div class="menu-list">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Edamame with Sea Salt</h3>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥800</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Chawanmushi</h3>
+                                <p class="item-desc">Savory Egg Custard</p>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥1,200</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Sashimi Trio</h3>
+                                <p class="item-desc">Chef's daily selection</p>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥2,500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Seaweed Salad</h3>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥900</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Grilled Scallops with Yuzu</h3>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥1,800</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sushi / Nigiri -->
+                <div class="menu-category mt-8 reveal-up">
+                    <h2 class="category-title">Sushi & Nigiri<span>02</span></h2>
+                    <div class="menu-list">
+                        <div class="menu-item has-image">
+                            <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=800&auto=format&fit=crop" alt="Toro" class="hover-img">
+                            <div class="item-info">
+                                <h3 class="item-name">Toro Nigiri</h3>
+                                <p class="item-desc">Fatty Tuna</p>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥3,500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item has-image">
+                            <img src="https://images.unsplash.com/photo-1633504581786-316c8002b1b9?q=80&w=800&auto=format&fit=crop" alt="Uni" class="hover-img">
+                            <div class="item-info">
+                                <h3 class="item-name">Uni Nigiri</h3>
+                                <p class="item-desc">Sea Urchin</p>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥3,200</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Ebi Nigiri</h3>
+                                <p class="item-desc">Sweet Shrimp</p>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥1,500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Hamachi Nigiri</h3>
+                                <p class="item-desc">Yellowtail</p>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥1,800</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Ikura</h3>
+                                <p class="item-desc">Salmon Roe</p>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥1,900</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Tamago</h3>
+                                <p class="item-desc">Sweet Egg Omelet</p>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥1,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Courses -->
+                <div class="menu-category mt-8 reveal-up">
+                    <h2 class="category-title">Seasonal Mains<span>03</span></h2>
+                    <div class="menu-list">
+                        <div class="menu-item has-image">
+                            <img src="https://images.unsplash.com/photo-1558056524-97698af21ff8?q=80&w=800&auto=format&fit=crop" alt="Wagyu" class="hover-img">
+                            <div class="item-info">
+                                <h3 class="item-name">Wagyu Beef Tataki</h3>
+                                <p class="item-desc">A5 Grade, Ponzu sauce</p>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥4,500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Seared Salmon Belly</h3>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥2,800</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Black Cod Miso</h3>
+                                <p class="item-desc">Marinated for 72 hours</p>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥3,000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Grilled Eel with Rice</h3>
+                                <p class="item-desc">Unagi Don</p>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥3,200</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Seasonal Kaiseki Set</h3>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥6,500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dessert -->
+                <div class="menu-category mt-8 reveal-up">
+                    <h2 class="category-title">Dessert<span>04</span></h2>
+                    <div class="menu-list">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Matcha Tiramisu</h3>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥1,500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Yuzu Sorbet</h3>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥1,200</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Mochi Ice Cream Trio</h3>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥1,300</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3 class="item-name">Sakura Panna Cotta</h3>
+                                <div class="item-dots"></div>
+                                <span class="item-price">¥1,400</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">SAKURA ESSENCE</div>
+                <div class="footer-links">
+                    <a href="menu.html">Menu</a>
+                    <a href="reservation.html">Reservation</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sakura Essence Omakase. Tokyo, Japan.</p>
+                <div class="socials">
+                    <a href="#">IG</a>
+                    <a href="#">FB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

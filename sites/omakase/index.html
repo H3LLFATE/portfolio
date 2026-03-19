@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Sakura Essence Omakase</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="loading">
+    
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <div class="music-toggle" id="musicToggle">
+        <div class="bars">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <span>BGM</span>
+    </div>
+    <!-- Hidden ambient audio -->
+    <audio id="ambientMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/01/21/audio_3101859c03.mp3?filename=japanese-koto-106511.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader-logo">Sakura Essence</div>
+        <div class="loader-line"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand">SAKURA ESSENCE</a>
+            
+            <div class="menu-btn" id="menuBtn">
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="active">Home</a>
+                <a href="menu.html" class="">Menu</a>
+                <a href="reservation.html" class="">Reservation</a>
+                <a href="gallery.html" class="">Gallery</a>
+                <a href="about.html" class="">About</a>
+                <a href="contact.html" class="">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-wrapper">
+        
+        <section class="hero-section">
+            <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=2000&auto=format&fit=crop');"></div>
+            <div class="hero-content reveal-up">
+                <span class="subtitle">Tokyo, Japan</span>
+                <h1 class="display-text">Sakura Essence<br>Omakase</h1>
+                <p class="tagline">Experience Culinary Art at Its Finest</p>
+                <div class="hero-actions">
+                    <a href="reservation.html" class="btn btn-primary">Reserve Table</a>
+                    <a href="menu.html" class="btn btn-outline">View Menu</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Discover</span>
+                <div class="line"></div>
+            </div>
+        </section>
+
+        <section class="section about-preview">
+            <div class="container container-split">
+                <div class="content-side reveal-up">
+                    <h2 class="section-title">The Art of <br>Omakase</h2>
+                    <p class="text-lead">At Sakura Essence, we believe in the quiet dialogue between chef and guest.</p>
+                    <p>Our philosophy is rooted in traditional Edomae techniques, elevated by modern sensibilities and the absolute finest seasonal ingredients. Every piece of nigiri is a testament to decades of dedication to the craft.</p>
+                    <a href="about.html" class="link-arrow">Discover Our Story <i class="icon-arrow-right"></i></a>
+                </div>
+                <div class="image-side reveal-up delay-1">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=1000&auto=format&fit=crop" alt="Master Chef">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section showcase-section">
+            <div class="container text-center reveal-up">
+                <h2 class="section-title">A Symphony of Flavors</h2>
+                <p class="text-lead">An intricate journey through twenty courses, carefully curated daily.</p>
+            </div>
+            <div class="marquee-wrapper reveal-fade">
+                <div class="marquee">
+                    <div class="marquee-group">
+                        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=800&auto=format&fit=crop" alt="Sushi">
+                        <img src="https://images.unsplash.com/photo-1633504581786-316c8002b1b9?q=80&w=800&auto=format&fit=crop" alt="Nigiri">
+                        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?q=80&w=800&auto=format&fit=crop" alt="Sashimi">
+                    </div>
+                    <div class="marquee-group">
+                        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=800&auto=format&fit=crop" alt="Sushi">
+                        <img src="https://images.unsplash.com/photo-1633504581786-316c8002b1b9?q=80&w=800&auto=format&fit=crop" alt="Nigiri">
+                        <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?q=80&w=800&auto=format&fit=crop" alt="Sashimi">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5 reveal-up">
+                <a href="menu.html" class="btn btn-outline">Explore The Menu</a>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">SAKURA ESSENCE</div>
+                <div class="footer-links">
+                    <a href="menu.html">Menu</a>
+                    <a href="reservation.html">Reservation</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sakura Essence Omakase. Tokyo, Japan.</p>
+                <div class="socials">
+                    <a href="#">IG</a>
+                    <a href="#">FB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

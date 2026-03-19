@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pak Din Mamak – Authentic Malaysian Cuisine | Kuala Lumpur</title>
+  <meta name="description" content="The best mamak in KL. Roti canai, mee goreng, teh tarik and more. Open 24 hours, Jalan Imbi, Kuala Lumpur." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --yellow:   #FFD600;
+      --orange:   #FF6B00;
+      --orange2:  #FF8C00;
+      --red:      #E53E00;
+      --green:    #2D7D32;
+      --green2:   #4CAF50;
+      --cream:    #FFF8E7;
+      --dark:     #1A1200;
+      --dark2:    #2C1F00;
+      --text:     #1A1200;
+      --muted:    #6B5A2E;
+      --white:    #FFFFFF;
+      --card-bg:  #FFFFFF;
+      --shadow:   0 4px 20px rgba(0,0,0,0.12);
+      --shadow-lg:0 8px 40px rgba(0,0,0,0.18);
+      --radius:   14px;
+      --radius-sm:8px;
+      --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── STICKY NAV ─── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 60px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
+    .nav-brand {
+      font-family: 'Caveat', cursive;
+      font-size: 1.6rem;
+      color: var(--yellow);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .nav-brand span { color: var(--orange); }
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      display: block;
+      padding: 8px 16px;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.3px;
+      border-radius: 6px;
+      transition: background var(--transition), color var(--transition);
+    }
+    .nav-links a:hover {
+      background: rgba(255,214,0,0.15);
+      color: var(--yellow);
+    }
+    .nav-order-btn {
+      background: linear-gradient(135deg, var(--orange), var(--red));
+      color: #fff !important;
+      border-radius: 50px !important;
+      padding: 8px 20px !important;
+      box-shadow: 0 3px 14px rgba(255,107,0,0.4);
+    }
+    .nav-order-btn:hover {
+      background: linear-gradient(135deg, var(--red), var(--orange)) !important;
+      box-shadow: 0 5px 20px rgba(255,107,0,0.55) !important;
+      color: #fff !important;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-top: 0;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/hero.png');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+    .hero:hover .hero-bg { transform: scale(1); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(26,18,0,0.72) 0%,
+        rgba(255,107,0,0.3) 60%,
+        rgba(26,18,0,0.80) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 760px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-title {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      animation: fadeUp 0.7s 0.1s ease both;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+    .hero-title span { color: var(--yellow); }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 36px;
+      line-height: 1.6;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--orange), var(--red));
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 6px 28px rgba(255,107,0,0.45);
+      transition: all var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(255,107,0,0.55);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      transition: all var(--transition);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.22);
+      transform: translateY(-3px);
+    }
+    .hero-stats {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 32px;
+      z-index: 2;
+    }
+    .hero-stat {
+      text-align: center;
+      color: #fff;
+    }
+    .hero-stat-num {
+      font-family: 'Caveat', cursive;
+      font-size: 2rem;
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.75rem;
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 30px;
+      right: 36px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .scroll-line {
+      width: 2px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--yellow), transparent);
+      border-radius: 2px;
+      animation: scrollLine 1.5s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%,100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0.4; transform: scaleY(0.6); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── DAILY SPECIALS TICKER ─── */
+    .specials-ticker {
+      background: linear-gradient(90deg, var(--orange), var(--red), var(--orange2));
+      background-size: 200% auto;
+      animation: gradSlide 4s linear infinite;
+      color: #fff;
+      padding: 12px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    @keyframes gradSlide {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    .ticker-inner {
+      display: inline-flex;
+      gap: 0;
+      animation: tickerScroll 30s linear infinite;
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0 28px;
+      letter-spacing: 0.5px;
+    }
+    .ticker-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--yellow);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    @keyframes tickerScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTION WRAPPER ─── */
+    section { padding: 72px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--yellow), var(--orange));
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--dark);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 48px;
+      max-width: 560px;
+    }
+    .section-header { text-align: center; }
+    .section-header .section-sub { margin-left: auto; margin-right: auto; }
+
+    /* ─── POPULAR / ROTI SECTION ─── */
+    #menu { background: var(--cream); }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .food-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+    }
+    .food-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-lg);
+    }
+    .food-card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .food-card:hover .food-card-img {
+      transform: scale(1.08);
+    }
+    .food-card-img-wrap {
+      overflow: hidden;
+      height: 180px;
+      position: relative;
+    }
+    .food-card-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--yellow);
+      color: var(--dark);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 50px;
+    }
+    .food-card-body {
+      padding: 16px 18px 18px;
+    }
+    .food-card-name {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .food-card-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .food-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .food-price {
+      font-family: 'Caveat', cursive;
+      font-size: 1.5rem;
+      color: var(--green);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .add-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--orange), var(--red));
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      box-shadow: 0 3px 12px rgba(255,107,0,0.35);
+      line-height: 1;
+    }
+    .add-btn:hover {
+      transform: scale(1.18) rotate(90deg);
+      box-shadow: 0 5px 18px rgba(255,107,0,0.5);
+    }
+
+    /* placeholder food color blocks (for items without photo) */
+    .food-img-placeholder {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    /* ─── ROTI SUBSECTION ─── */
+    #roti { background: #FFF3E0; }
+    .roti-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .roti-card {
+      background: #fff;
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      border-left: 4px solid var(--orange);
+      transition: all var(--transition);
+      cursor: default;
+    }
+    .roti-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 18px rgba(255,107,0,0.18);
+      border-left-color: var(--red);
+    }
+    .roti-card-left { display: flex; align-items: center; gap: 12px; }
+    .roti-icon { font-size: 1.8rem; }
+    .roti-name { font-weight: 700; font-size: 0.95rem; color: var(--dark); }
+    .roti-price {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      color: var(--green);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* ─── DRINKS ─── */
+    #drinks { background: #E8F5E9; }
+    .drinks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 18px;
+    }
+    .drink-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 22px 16px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: all var(--transition);
+      border-top: 4px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .drink-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green2), var(--green));
+    }
+    .drink-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .drink-card:hover::before {
+      background: linear-gradient(90deg, var(--orange), var(--red));
+    }
+    .drink-icon { font-size: 2.6rem; margin-bottom: 10px; display: block; }
+    .drink-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--dark);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .drink-img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: block;
+      border: 3px solid var(--green2);
+    }
+    .drink-price {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* ─── ORDER SECTION ─── */
+    #order {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      padding: 60px 24px;
+    }
+    .order-wrap {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .order-title {
+      font-family: 'Caveat', cursive;
+      font-size: 2.6rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .order-title span { color: var(--yellow); }
+    .order-sub {
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 36px;
+      font-size: 1rem;
+    }
+    .order-platforms {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .platform-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.95rem;
+      transition: all var(--transition);
+      border: 2px solid transparent;
+    }
+    .platform-grab {
+      background: #00B14F;
+      color: #fff;
+      box-shadow: 0 5px 22px rgba(0,177,79,0.4);
+    }
+    .platform-grab:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,177,79,0.5);
+    }
+    .platform-foodpanda {
+      background: #D70F64;
+      color: #fff;
+      box-shadow: 0 5px 22px rgba(215,15,100,0.4);
+    }
+    .platform-foodpanda:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(215,15,100,0.5);
+    }
+    .platform-icon { font-size: 1.6rem; }
+
+    /* ─── LOCATION ─── */
+    #location { background: var(--cream); }
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .map-placeholder {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      height: 340px;
+      background: linear-gradient(135deg, #c8d6e0, #a8bcc8);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border: 2px solid rgba(255,255,255,0.8);
+    }
+    .map-pin { font-size: 3.5rem; }
+    .map-label {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--dark);
+      text-align: center;
+      padding: 0 24px;
+    }
+    .map-sub { font-size: 0.85rem; color: var(--muted); text-align: center; }
+    .map-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .map-open-btn {
+      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--dark);
+      color: #fff;
+      padding: 9px 20px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .map-open-btn:hover { background: var(--orange); transform: translateY(-2px); }
+    .location-info { display: flex; flex-direction: column; gap: 22px; }
+    .info-card {
+      background: #fff;
+      border-radius: var(--radius-sm);
+      padding: 20px 22px;
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .info-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .info-label { font-size: 0.72rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; }
+    .info-val { font-weight: 600; font-size: 0.95rem; color: var(--dark); line-height: 1.5; }
+    .info-hours-row { display: flex; justify-content: space-between; margin-bottom: 3px; }
+    .info-hours-day { color: var(--muted); font-size: 0.85rem; }
+    .info-hours-time { font-weight: 700; font-size: 0.85rem; color: var(--dark); }
+    .open-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #E8F5E9;
+      color: var(--green);
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-top: 6px;
+    }
+    .open-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--green2);
+      border-radius: 50%;
+      animation: pulse-green 1.8s infinite;
+    }
+    @keyframes pulse-green {
+      0%,100% { box-shadow: 0 0 0 0 rgba(76,175,80,0.8); }
+      50% { box-shadow: 0 0 0 5px rgba(76,175,80,0); }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.7);
+      padding: 48px 24px 28px;
+    }
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+    }
+    .footer-brand-name {
+      font-family: 'Caveat', cursive;
+      font-size: 2rem;
+      color: var(--yellow);
+      margin-bottom: 8px;
+    }
+    .footer-brand-name span { color: var(--orange); }
+    .footer-desc {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      color: rgba(255,255,255,0.6);
+    }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .social-btn:hover { background: var(--orange); transform: translateY(-3px); }
+    .footer-col-title {
+      color: var(--yellow);
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--yellow); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+    .footer-halal {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(45,125,50,0.25);
+      border: 1px solid rgba(76,175,80,0.3);
+      color: var(--green2);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-stats { gap: 20px; }
+      .location-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid > :first-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { bottom: 30px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, .ticker-inner, .hero-bg, .scroll-line { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-brand">🍛 Pak Din <span>Mamak</span></div>
+    <ul class="nav-links" role="list">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#roti">Roti</a></li>
+      <li><a href="#drinks">Drinks</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#order" class="nav-order-btn">Order Now 🛵</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home" aria-label="Hero banner">
+    <div class="hero-bg" role="img" aria-label="Busy Malaysian mamak restaurant at night"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-badge">⭐ No. 1 Mamak in KL</div>
+      <h1 class="hero-title">Authentic <span>Malaysian</span><br>Mamak Cuisine</h1>
+      <p class="hero-sub">From crispy roti canai to smoky mee goreng — <br>taste the real soul of Malaysian street food.</p>
+      <div class="hero-btns">
+        <a href="#menu" class="btn-primary">🍽️ See Full Menu</a>
+        <a href="#order" class="btn-secondary">🛵 Order Online</a>
+      </div>
+    </div>
+    <div class="hero-stats" aria-label="Restaurant highlights">
+      <div class="hero-stat">
+        <div class="hero-stat-num">24/7</div>
+        <div class="hero-stat-label">Always Open</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">20+</div>
+        <div class="hero-stat-label">Menu Items</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">🌙</div>
+        <div class="hero-stat-label">Since 1998</div>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- TICKER: DAILY SPECIALS -->
+  <div class="specials-ticker" aria-label="Daily specials announcement" role="marquee">
+    <div class="ticker-inner">
+      <!-- doubled for seamless loop -->
+      <span class="ticker-item"><span class="ticker-dot"></span> TODAY'S SPECIAL: Laksa Johor RM 8.00</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> COMBO MEAL: Nasi Lemak + Teh Tarik RM 8.00</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> BREAKFAST DEAL: Roti Canai + Kopi O RM 3.90</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> SUPPER SPECIAL: Maggi Goreng + Milo Ais RM 8.50</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> TODAY'S SPECIAL: Laksa Johor RM 8.00</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> COMBO MEAL: Nasi Lemak + Teh Tarik RM 8.00</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> BREAKFAST DEAL: Roti Canai + Kopi O RM 3.90</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> SUPPER SPECIAL: Maggi Goreng + Milo Ais RM 8.50</span>
+    </div>
+  </div>
+
+  <!-- MAIN DISHES MENU -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">🍛 Popular Dishes</div>
+        <h2 class="section-title">Our Famous Main Dishes</h2>
+        <p class="section-sub">Wok-cooked to order, full of wok hei, served piping hot every single time.</p>
+      </div>
+      <div class="menu-grid">
+
+        <!-- Nasi Lemak -->
+        <article class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="images/nasi-lemak.png" alt="Nasi Lemak" class="food-card-img" loading="lazy" decoding="async" />
+            <span class="food-card-badge">🔥 Bestseller</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-card-name">Nasi Lemak</div>
+            <div class="food-card-desc">Coconut fragrant rice with sambal, anchovies, egg & crispy chicken.</div>
+            <div class="food-card-footer">
+              <span class="food-price">RM 6.50</span>
+              <button class="add-btn" aria-label="Add Nasi Lemak to order">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Nasi Goreng Mamak -->
+        <article class="food-card">
+          <div class="food-card-img-wrap">
+            <div class="food-img-placeholder" style="background:linear-gradient(135deg,#FF8C00,#FFD600);">🍳</div>
+          </div>
+          <div class="food-card-body">
+            <div class="food-card-name">Nasi Goreng Mamak</div>
+            <div class="food-card-desc">Wok-fried rice with egg, chicken, mixed vegetables & dark soy.</div>
+            <div class="food-card-footer">
+              <span class="food-price">RM 7.50</span>
+              <button class="add-btn" aria-label="Add Nasi Goreng Mamak to order">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mee Goreng Mamak -->
+        <article class="food-card">
+          <div class="food-card-img-wrap">
+            <img src="images/mee-goreng.png" alt="Mee Goreng Mamak" class="food-card-img" loading="lazy" decoding="async" />
+            <span class="food-card-badge">⭐ Must Try</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-card-name">Mee Goreng Mamak</div>
+            <div class="food-card-desc">Spicy fried yellow noodles with tofu, egg, bean sprouts & tomato.</div>
+            <div class="food-card-footer">
+              <span class="food-price">RM 6.90</span>
+              <button class="add-btn" aria-label="Add Mee Goreng Mamak to order">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Maggi Goreng -->
+        <article class="food-card">
+          <div class="food-card-img-wrap">
+            <div class="food-img-placeholder" style="background:linear-gradient(135deg,#FF6B00,#FFB300);">🍜</div>
+          </div>
+          <div class="food-card-body">
+            <div class="food-card-name">Maggi Goreng</div>
+            <div class="food-card-desc">Instant noodles stir-fried mamak-style with egg, veg & chilli — late-night favourite.</div>
+            <div class="food-card-footer">
+              <span class="food-price">RM 6.50</span>
+              <button class="add-btn" aria-label="Add Maggi Goreng to order">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Curry Mee -->
+        <article class="food-card">
+          <div class="food-card-img-wrap">
+            <div class="food-img-placeholder" style="background:linear-gradient(135deg,#E65100,#FF8F00);">🍲</div>
+          </div>
+          <div class="food-card-body">
+            <div class="food-card-name">Curry Mee</div>
+            <div class="food-card-desc">Rich spiced coconut curry broth with yellow noodles, tofu puff & cockles.</div>
+            <div class="food-card-footer">
+              <span class="food-price">RM 7.00</span>
+              <button class="add-btn" aria-label="Add Curry Mee to order">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Laksa Johor -->
+        <article class="food-card">
+          <div class="food-card-img-wrap">
+            <div class="food-img-placeholder" style="background:linear-gradient(135deg,#BF360C,#FF6D00);">🥣</div>
+          </div>
+          <div class="food-card-body">
+            <div class="food-card-name">Laksa Johor</div>
+            <div class="food-card-desc">Thick fish-based coconut broth with spaghetti noodles, fresh herbs & sambal.</div>
+            <div class="food-card-footer">
+              <span class="food-price">RM 8.00</span>
+              <button class="add-btn" aria-label="Add Laksa Johor to order">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fried Kuey Teow -->
+        <article class="food-card">
+          <div class="food-card-img-wrap">
+            <div class="food-img-placeholder" style="background:linear-gradient(135deg,#3E2723,#795548);">🥡</div>
+          </div>
+          <div class="food-card-body">
+            <div class="food-card-name">Fried Kuey Teow</div>
+            <div class="food-card-desc">Flat rice noodles wok-fried with prawns, egg, bean sprouts & dark sauce.</div>
+            <div class="food-card-footer">
+              <span class="food-price">RM 7.50</span>
+              <button class="add-btn" aria-label="Add Fried Kuey Teow to order">+</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Chicken Satay -->
+        <article class="food-card">
+          <div class="food-card-img-wrap">
+            <div class="food-img-placeholder" style="background:linear-gradient(135deg,#F57F17,#FFCA28);">🍢</div>
+            <span class="food-card-badge">Min. 5 sticks</span>
+          </div>
+          <div class="food-card-body">
+            <div class="food-card-name">Chicken Satay</div>
+            <div class="food-card-desc">Charcoal-grilled marinated chicken skewers with peanut sauce & compressed rice.</div>
+            <div class="food-card-footer">
+              <span class="food-price">RM 1.50<small style="font-size:0.7rem;color:var(--muted)">/stick</small></span>
+              <button class="add-btn" aria-label="Add Chicken Satay to order">+</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ROTI SECTION -->
+  <section id="roti">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">🫓 Roti Corner</div>
+        <h2 class="section-title">Freshly Made Roti</h2>
+        <p class="section-sub">Hand-stretched and cooked on a hot iron griddle, served with fresh dhal and curry.</p>
+      </div>
+      <div class="roti-grid">
+        <div class="roti-card">
+          <div class="roti-card-left">
+            <span class="roti-icon">🫓</span>
+            <div class="roti-name">Roti Canai</div>
+          </div>
+          <div class="roti-price">RM 2.20</div>
+        </div>
+        <div class="roti-card">
+          <div class="roti-card-left">
+            <span class="roti-icon">🍳</span>
+            <div class="roti-name">Roti Telur</div>
+          </div>
+          <div class="roti-price">RM 2.50</div>
+        </div>
+        <div class="roti-card">
+          <div class="roti-card-left">
+            <span class="roti-icon">🌯</span>
+            <div class="roti-name">Roti Tissue</div>
+          </div>
+          <div class="roti-price">RM 3.50</div>
+        </div>
+        <div class="roti-card">
+          <div class="roti-card-left">
+            <span class="roti-icon">🧈</span>
+            <div class="roti-name">Roti Planta</div>
+          </div>
+          <div class="roti-price">RM 2.80</div>
+        </div>
+      </div>
+
+      <!-- Roti image feature -->
+      <div style="margin-top:40px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);max-height:320px;">
+        <img src="images/roti-canai.png" alt="Freshly made roti canai with dhal curry" style="width:100%;height:320px;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </section>
+
+  <!-- DRINKS -->
+  <section id="drinks">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">☕ Drinks Menu</div>
+        <h2 class="section-title">Sip Something Good</h2>
+        <p class="section-sub">Fresh-pulled teh tarik to ice-cold barley — the perfect drink for any weather.</p>
+      </div>
+      <div class="drinks-grid">
+        <div class="drink-card">
+          <span class="drink-icon">🧋</span>
+          <div class="drink-name">Teh Tarik</div>
+          <div class="drink-price">RM 2.50</div>
+        </div>
+        <div class="drink-card">
+          <span class="drink-icon">🍵</span>
+          <div class="drink-name">Teh O Ais</div>
+          <div class="drink-price">RM 2.00</div>
+        </div>
+        <div class="drink-card">
+          <span class="drink-icon">🥛</span>
+          <div class="drink-name">Milo Ais</div>
+          <div class="drink-price">RM 2.50</div>
+        </div>
+        <div class="drink-card">
+          <span class="drink-icon">🍋</span>
+          <div class="drink-name">Limau Ais</div>
+          <div class="drink-price">RM 2.20</div>
+        </div>
+        <div class="drink-card">
+          <span class="drink-icon">🌸</span>
+          <div class="drink-name">Sirap Bandung</div>
+          <div class="drink-price">RM 2.50</div>
+        </div>
+        <div class="drink-card">
+          <span class="drink-icon">☕</span>
+          <div class="drink-name">Kopi O</div>
+          <div class="drink-price">RM 2.20</div>
+        </div>
+        <div class="drink-card">
+          <span class="drink-icon">☕</span>
+          <div class="drink-name">Kopi Susu</div>
+          <div class="drink-price">RM 2.50</div>
+        </div>
+        <div class="drink-card">
+          <span class="drink-icon">🩷</span>
+          <div class="drink-name">Bandung Cincau</div>
+          <div class="drink-price">RM 3.00</div>
+        </div>
+        <div class="drink-card">
+          <span class="drink-icon">🍈</span>
+          <div class="drink-name">Air Mata Kucing</div>
+          <div class="drink-price">RM 2.50</div>
+        </div>
+        <div class="drink-card">
+          <span class="drink-icon">🌾</span>
+          <div class="drink-name">Barley Drink</div>
+          <div class="drink-price">RM 2.20</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER ONLINE -->
+  <section id="order">
+    <div class="order-wrap">
+      <div class="section-label" style="background:var(--yellow);color:var(--dark);">🛵 Order Online</div>
+      <h2 class="order-title">Craving Mamak? <span>We Deliver!</span></h2>
+      <p class="order-sub">Order from the comfort of your home. Available on GrabFood and Foodpanda.</p>
+      <div class="order-platforms">
+        <a href="#" class="platform-btn platform-grab" aria-label="Order on GrabFood">
+          <span class="platform-icon">🟢</span>
+          <div>
+            <div style="font-size:0.72rem;opacity:0.8;letter-spacing:0.5px;">ORDER ON</div>
+            <div>GrabFood</div>
+          </div>
+        </a>
+        <a href="#" class="platform-btn platform-foodpanda" aria-label="Order on Foodpanda">
+          <span class="platform-icon">🐼</span>
+          <div>
+            <div style="font-size:0.72rem;opacity:0.8;letter-spacing:0.5px;">ORDER ON</div>
+            <div>Foodpanda</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="location">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">📍 Find Us</div>
+        <h2 class="section-title">We're Easy to Find</h2>
+        <p class="section-sub">Located in the heart of Kuala Lumpur, right off Jalan Imbi — just follow the smell.</p>
+      </div>
+      <div class="location-grid">
+        <!-- Map Placeholder -->
+        <div class="map-placeholder" role="img" aria-label="Map placeholder showing restaurant location">
+          <div class="map-grid-lines" aria-hidden="true"></div>
+          <div class="map-pin">📍</div>
+          <div class="map-label">Pak Din Mamak<br>Jalan Imbi, KL</div>
+          <div class="map-sub">Near Berjaya Times Square</div>
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="map-open-btn">
+            🗺️ Open in Google Maps
+          </a>
+        </div>
+
+        <!-- Info Cards -->
+        <div class="location-info">
+          <div class="info-card">
+            <div class="info-icon">📍</div>
+            <div>
+              <div class="info-label">Address</div>
+              <div class="info-val">
+                No. 12, Jalan Imbi,<br>
+                Bukit Bintang,<br>
+                55100 Kuala Lumpur, Malaysia
+              </div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🕐</div>
+            <div>
+              <div class="info-label">Opening Hours</div>
+              <div class="info-val">
+                <div class="info-hours-row">
+                  <span class="info-hours-day">Monday – Friday</span>
+                  <span class="info-hours-time">24 Hours</span>
+                </div>
+                <div class="info-hours-row">
+                  <span class="info-hours-day">Saturday – Sunday</span>
+                  <span class="info-hours-time">24 Hours</span>
+                </div>
+                <div class="open-badge"><div class="open-dot"></div> Open Now</div>
+              </div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">📞</div>
+            <div>
+              <div class="info-label">Contact</div>
+              <div class="info-val">
+                📱 +60 12-345 6789<br>
+                📧 pakdinmamak@gmail.com
+              </div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🚗</div>
+            <div>
+              <div class="info-label">Getting Here</div>
+              <div class="info-val">
+                LRT: Imbi Station (3 min walk)<br>
+                Parking: Wisma Berjaya (RM 2/hr)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">🍛 Pak Din <span>Mamak</span></div>
+        <p class="footer-desc">
+          Serving authentic Malaysian street food since 1998. 
+          From our kitchen to your table — every dish is made with heart and wok hei.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Facebook">📘</a>
+          <a href="#" class="social-btn" aria-label="Instagram">📸</a>
+          <a href="#" class="social-btn" aria-label="TikTok">🎵</a>
+          <a href="#" class="social-btn" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#menu">Main Menu</a></li>
+          <li><a href="#roti">Roti Corner</a></li>
+          <li><a href="#drinks">Drinks</a></li>
+          <li><a href="#order">Order Online</a></li>
+          <li><a href="#location">Location</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Your Order</div>
+        <ul class="footer-links">
+          <li><a href="#">GrabFood</a></li>
+          <li><a href="#">Foodpanda</a></li>
+          <li><a href="#">Dine In</a></li>
+          <li><a href="#">Self Pickup</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Pak Din Mamak. All rights reserved. | Kuala Lumpur, Malaysia</div>
+      <div class="footer-halal">✅ Halal Certified</div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth nav highlight on scroll
+    const sections = document.querySelectorAll('section[id], footer');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(a => {
+            a.style.color = a.getAttribute('href') === `#${id}`
+              ? 'var(--yellow)'
+              : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => io.observe(s));
+
+    // Add-to-order pop feedback
+    document.querySelectorAll('.add-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const original = this.textContent;
+        this.textContent = '✓';
+        this.style.background = 'var(--green2)';
+        setTimeout(() => {
+          this.textContent = original;
+          this.style.background = '';
+        }, 900);
+      });
+    });
+  </script>
+</body>
+</html>

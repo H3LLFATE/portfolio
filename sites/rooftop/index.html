@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>SORA – Luxury Rooftop Bar & Grill | Kuala Lumpur</title>
+  <meta name="description" content="Elevate your night at SORA — Kuala Lumpur's premier rooftop bar and grill. Signature cocktails, premium steaks, live music, and breathtaking city skyline views."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --bg:#080B14;--surface:#0E1221;--surface2:#151A2E;--card:#111628;
+      --gold:#C9A84C;--gold-lit:#E8D48B;--gold-dim:#9A7B2F;
+      --neon:#00E0FF;--neon-dim:#007A8A;--accent-pink:#FF3366;
+      --white:#F5F5F7;--muted:#8892A4;--text:#CDD4E0;
+      --border:rgba(255,255,255,.06);
+      --shadow:0 8px 40px rgba(0,0,0,.35);--shadow-lg:0 20px 60px rgba(0,0,0,.5);
+      --radius:14px;--radius-sm:8px;
+      --ease:cubic-bezier(.4,0,.2,1);
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --sans:'Inter',system-ui,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+    h1,h2,h3,h4{font-family:var(--serif);font-weight:700;color:var(--white)}
+    img{max-width:100%;display:block}
+
+    /* ─── NAV ─── */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:72px;
+      background:rgba(8,11,20,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+      display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,48px);
+      border-bottom:1px solid var(--border);transition:background .3s var(--ease)}
+    .nav.scrolled{background:rgba(8,11,20,.97);border-color:var(--gold-dim)}
+    .nav-brand{font-family:var(--serif);font-size:1.6rem;color:var(--gold);letter-spacing:4px;font-weight:700;text-transform:uppercase}
+    .nav-brand span{color:var(--neon);font-size:.6em;vertical-align:super;letter-spacing:1px}
+    .nav-links{display:flex;gap:6px;list-style:none;align-items:center}
+    .nav-links a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.8rem;letter-spacing:1.2px;text-transform:uppercase;padding:8px 14px;border-radius:var(--radius-sm);transition:all .25s var(--ease)}
+    .nav-links a:hover{color:var(--gold);background:rgba(201,168,76,.08)}
+    .nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-dim))!important;color:var(--bg)!important;padding:10px 24px!important;border-radius:50px!important;font-weight:700!important}
+    .nav-cta:hover{box-shadow:0 6px 24px rgba(201,168,76,.35);transform:translateY(-1px)}
+    .mobile-toggle{display:none;background:none;border:none;color:var(--gold);font-size:1.5rem;cursor:pointer}
+
+    /* ─── HERO ─── */
+    .hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1800&q=80') center/cover no-repeat;opacity:.35}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,11,20,.5) 0%,rgba(8,11,20,.3) 40%,rgba(8,11,20,.85) 100%)}
+    .hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(0,224,255,.06) 0%,transparent 70%);pointer-events:none}
+    .hero-content{position:relative;z-index:2;padding:0 24px;max-width:860px}
+    .hero-eyebrow{color:var(--gold);font-family:var(--sans);font-size:.82rem;letter-spacing:5px;text-transform:uppercase;font-weight:600;margin-bottom:20px;animation:fadeUp .8s var(--ease) .2s backwards}
+    .hero-title{font-size:clamp(3rem,7vw,5.8rem);color:var(--white);line-height:1.05;margin-bottom:28px;text-shadow:0 4px 40px rgba(0,0,0,.5);animation:fadeUp .8s var(--ease) .4s backwards}
+    .hero-title em{font-style:italic;color:var(--gold)}
+    .hero-desc{color:rgba(255,255,255,.7);font-size:1.15rem;max-width:540px;margin:0 auto 44px;animation:fadeUp .8s var(--ease) .6s backwards}
+    .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s var(--ease) .8s backwards}
+    .btn-gold{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold-dim));color:var(--bg);padding:16px 40px;font-weight:700;text-decoration:none;font-size:.9rem;letter-spacing:1.5px;border-radius:50px;transition:all .3s var(--ease);text-transform:uppercase;border:none;cursor:pointer}
+    .btn-gold:hover{box-shadow:0 12px 36px rgba(201,168,76,.35);transform:translateY(-3px)}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--white);padding:15px 40px;font-weight:600;text-decoration:none;font-size:.9rem;letter-spacing:1.5px;border-radius:50px;transition:all .3s var(--ease);text-transform:uppercase;border:1px solid rgba(255,255,255,.2)}
+    .btn-ghost:hover{border-color:var(--neon);color:var(--neon);background:rgba(0,224,255,.05)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+    .scroll-arrow{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;color:var(--gold);font-size:.7rem;letter-spacing:3px;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px;animation:float 2.5s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
+
+    /* ─── SECTIONS ─── */
+    section{padding:110px 24px}
+    .container{max-width:1240px;margin:0 auto}
+    .section-header{text-align:center;margin-bottom:64px}
+    .section-eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-size:.76rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
+    .section-eyebrow::before,.section-eyebrow::after{content:'';width:24px;height:1px;background:var(--gold-dim)}
+    .section-title{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.15;margin-bottom:18px}
+    .section-line{width:50px;height:2px;background:linear-gradient(90deg,var(--gold),var(--neon));margin:0 auto 20px;border-radius:2px}
+    .section-desc{color:var(--muted);max-width:520px;margin:0 auto;font-size:1rem}
+
+    /* ─── MENU TABS ─── */
+    .menu-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:48px;flex-wrap:wrap}
+    .menu-tab{background:var(--surface);border:1px solid var(--border);color:var(--muted);font-family:var(--sans);font-size:.82rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:10px 24px;border-radius:50px;cursor:pointer;transition:all .25s var(--ease)}
+    .menu-tab:hover{color:var(--white);border-color:rgba(255,255,255,.15)}
+    .menu-tab.active{background:linear-gradient(135deg,var(--gold),var(--gold-dim));color:var(--bg);border-color:transparent;box-shadow:0 4px 18px rgba(201,168,76,.25)}
+    .menu-panel{display:none}.menu-panel.active{display:block}
+
+    /* ─── FOOD GRID ─── */
+    .food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+    .food-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .35s var(--ease);position:relative}
+    .food-card:hover{transform:translateY(-6px);border-color:rgba(201,168,76,.2);box-shadow:var(--shadow)}
+    .food-img{height:200px;overflow:hidden;position:relative}
+    .food-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);filter:brightness(.9)}
+    .food-card:hover .food-img img{transform:scale(1.08);filter:brightness(1)}
+    .food-img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(8,11,20,.6) 100%)}
+    .food-price-tag{position:absolute;top:14px;right:14px;background:rgba(8,11,20,.8);backdrop-filter:blur(8px);color:var(--gold);font-weight:700;font-size:.85rem;padding:6px 14px;border-radius:50px;border:1px solid rgba(201,168,76,.25)}
+    .food-body{padding:20px 22px 24px}
+    .food-name{font-family:var(--serif);font-size:1.2rem;color:var(--white);margin-bottom:8px;font-weight:600}
+    .food-desc{font-size:.85rem;color:var(--muted);line-height:1.5;margin-bottom:16px}
+    .food-bottom{display:flex;justify-content:space-between;align-items:center}
+    .food-price{font-weight:700;color:var(--gold);font-size:1.1rem}
+    .food-add{background:transparent;border:1px solid rgba(255,255,255,.12);color:var(--white);font-family:var(--sans);font-size:.75rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;padding:8px 18px;border-radius:50px;cursor:pointer;transition:all .25s var(--ease)}
+    .food-add:hover{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+
+    /* ─── COCKTAILS ─── */
+    .cocktails-section{background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%)}
+    .cocktail-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+    .cocktail-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;text-align:center;transition:all .3s var(--ease);position:relative}
+    .cocktail-card:hover{transform:translateY(-5px);border-color:rgba(0,224,255,.2);box-shadow:0 12px 36px rgba(0,224,255,.08)}
+    .cocktail-img{height:240px;overflow:hidden;position:relative}
+    .cocktail-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);filter:brightness(.85) saturate(1.1)}
+    .cocktail-card:hover .cocktail-img img{transform:scale(1.06);filter:brightness(1) saturate(1.2)}
+    .cocktail-info{padding:18px 16px 22px}
+    .cocktail-name{font-family:var(--serif);font-size:1.1rem;color:var(--white);margin-bottom:4px;font-weight:600}
+    .cocktail-price{color:var(--gold);font-weight:700;font-size:.92rem}
+    .cocktail-sub{font-size:.78rem;color:var(--muted);margin-top:4px}
+
+    /* ─── WINE LIST ─── */
+    .wine-grid{max-width:800px;margin:0 auto}
+    .wine-item{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--border);transition:all .25s var(--ease)}
+    .wine-item:hover{padding-left:8px;border-color:rgba(201,168,76,.2)}
+    .wine-name{font-weight:600;color:var(--white);font-size:.95rem}
+    .wine-type{font-size:.78rem;color:var(--muted);margin-top:2px}
+    .wine-price{color:var(--gold);font-weight:700;white-space:nowrap;font-size:.95rem}
+
+    /* ─── EVENTS ─── */
+    .events-section{background:var(--surface)}
+    .events-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .event-card{border-radius:var(--radius);overflow:hidden;position:relative;height:340px;display:flex;align-items:flex-end}
+    .event-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+    .event-card:hover img{transform:scale(1.05)}
+    .event-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(8,11,20,.9) 100%)}
+    .event-body{position:relative;z-index:2;padding:28px}
+    .event-badge{display:inline-block;background:rgba(0,224,255,.12);color:var(--neon);font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:50px;border:1px solid rgba(0,224,255,.25);margin-bottom:10px}
+    .event-title{font-family:var(--serif);font-size:1.5rem;color:var(--white);margin-bottom:8px}
+    .event-desc{font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.5}
+
+    /* ─── RESERVATION CTA ─── */
+    .reserve-section{position:relative;padding:100px 24px;overflow:hidden;text-align:center}
+    .reserve-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1400&q=80') center/cover no-repeat;opacity:.15}
+    .reserve-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,11,20,.9),rgba(14,18,33,.95))}
+    .reserve-content{position:relative;z-index:2;max-width:600px;margin:0 auto}
+    .reserve-content h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:16px;color:var(--gold)}
+    .reserve-content p{color:var(--muted);font-size:1.05rem;margin-bottom:36px}
+
+    /* ─── LOCATION ─── */
+    .loc-grid{display:grid;grid-template-columns:1fr 1fr;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+    .loc-info{padding:clamp(32px,5vw,56px)}
+    .loc-info h2{font-size:1.8rem;color:var(--gold);margin-bottom:8px}
+    .loc-divider{width:40px;height:2px;background:var(--gold);margin-bottom:32px}
+    .loc-item{display:flex;gap:14px;margin-bottom:24px}
+    .loc-icon{width:40px;height:40px;border-radius:50%;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .loc-label{font-weight:700;color:var(--white);font-size:.92rem;margin-bottom:4px}
+    .loc-text{color:var(--muted);font-size:.88rem;line-height:1.5}
+    .map-placeholder{background:linear-gradient(135deg,#0a0e1a,#111830);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;min-height:400px}
+    .map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:40px 40px}
+    .map-pin{font-size:3rem;z-index:2;animation:pinFloat 2.5s ease-in-out infinite}
+    @keyframes pinFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .map-text{z-index:2;font-family:var(--serif);font-size:1.1rem;color:var(--gold);margin-top:10px}
+    .map-sub{z-index:2;color:var(--muted);font-size:.82rem;margin-top:4px}
+
+    /* ─── FOOTER ─── */
+    footer{background:#050710;border-top:1px solid var(--border);padding:60px 24px 28px;text-align:center}
+    .footer-brand{font-family:var(--serif);font-size:1.8rem;color:var(--gold);letter-spacing:4px;margin-bottom:8px;text-transform:uppercase}
+    .footer-tagline{font-size:.82rem;color:var(--muted);margin-bottom:28px;letter-spacing:1px}
+    .footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;list-style:none;margin-bottom:28px}
+    .footer-links a{color:var(--muted);text-decoration:none;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;font-weight:500;transition:color .25s}
+    .footer-links a:hover{color:var(--gold)}
+    .footer-socials{display:flex;justify-content:center;gap:16px;margin-bottom:32px}
+    .footer-socials a{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:.9rem;transition:all .25s var(--ease)}
+    .footer-socials a:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.06)}
+    .footer-copy{font-size:.75rem;color:rgba(255,255,255,.25);padding-top:24px;border-top:1px solid var(--border)}
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:900px){
+      .nav-links{display:none}
+      .mobile-toggle{display:block}
+      .events-grid,.loc-grid{grid-template-columns:1fr}
+      .food-grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+    }
+    @media(max-width:500px){
+      section{padding:80px 16px}
+      .cocktail-grid{grid-template-columns:1fr 1fr}
+      .food-grid{grid-template-columns:1fr}
+    }
+
+    /* ─── REVEAL ─── */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    .reveal.visible{opacity:1;transform:none}
+    .reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
+
+    /* ─── NEON GLOW ACCENTS ─── */
+    .neon-line{height:1px;background:linear-gradient(90deg,transparent,var(--neon),transparent);opacity:.15;margin:0 auto;max-width:600px}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-brand">SORA <span>KL</span></div>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#cocktails">Cocktails</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#reserve" class="nav-cta">Reserve</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Level 42 · Kuala Lumpur</div>
+    <h1 class="hero-title">Elevate<br>Your <em>Night</em></h1>
+    <p class="hero-desc">Premium cuts, signature cocktails, and the city's most breathtaking skyline — all 42 floors above the ordinary.</p>
+    <div class="hero-actions">
+      <a href="#reserve" class="btn-gold">Reserve Your Table</a>
+      <a href="#menu" class="btn-ghost">View Menu</a>
+    </div>
+  </div>
+  <div class="scroll-arrow"><span>Scroll</span><span>▾</span></div>
+</section>
+
+<!-- GRILL MENU -->
+<section id="menu">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">From Our Kitchen</div>
+      <h2 class="section-title">The Grill &amp; Bar Menu</h2>
+      <div class="section-line"></div>
+      <p class="section-desc">Prime cuts, artisan dishes, and bold flavours crafted by our executive chef.</p>
+    </div>
+
+    <div class="menu-tabs reveal">
+      <button class="menu-tab active" onclick="showPanel('starters',this)">Starters</button>
+      <button class="menu-tab" onclick="showPanel('mains',this)">Main Courses</button>
+    </div>
+
+    <!-- STARTERS -->
+    <div class="menu-panel active" id="panel-starters">
+      <div class="food-grid">
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=600&q=80" alt="Truffle Fries" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 28</span></div><div class="food-body"><div class="food-name">Truffle Fries</div><p class="food-desc">Hand-cut fries with truffle oil, parmesan shavings & truffle aioli.</p><div class="food-bottom"><span class="food-price">RM 28</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1527477396000-e27163b94c10?w=600&q=80" alt="Buffalo Wings" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 35</span></div><div class="food-body"><div class="food-name">Buffalo Wings</div><p class="food-desc">Crispy chicken wings in smoky buffalo sauce, blue cheese dip.</p><div class="food-bottom"><span class="food-price">RM 35</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" alt="Charred Octopus" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 65</span></div><div class="food-body"><div class="food-name">Charred Octopus</div><p class="food-desc">Grilled Spanish octopus, smoked paprika, chimichurri & potatoes.</p><div class="food-bottom"><span class="food-price">RM 65</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=600&q=80" alt="Beef Carpaccio" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 58</span></div><div class="food-body"><div class="food-name">Beef Carpaccio</div><p class="food-desc">Thinly sliced raw beef, arugula, capers, shaved pecorino & lemon oil.</p><div class="food-bottom"><span class="food-price">RM 58</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=80" alt="Smoked Salmon Crostini" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 50</span></div><div class="food-body"><div class="food-name">Smoked Salmon Crostini</div><p class="food-desc">Cured salmon on toasted brioche, crème fraîche, dill & capers.</p><div class="food-bottom"><span class="food-price">RM 50</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1625938145744-e380515399bf?w=600&q=80" alt="Crispy Calamari" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 42</span></div><div class="food-body"><div class="food-name">Crispy Calamari</div><p class="food-desc">Golden-fried squid rings, marinara sauce & garlic aioli.</p><div class="food-bottom"><span class="food-price">RM 42</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80" alt="Grilled Vegetable Skewers" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 30</span></div><div class="food-body"><div class="food-name">Grilled Vegetable Skewers</div><p class="food-desc">Seasonal vegetables, balsamic glaze, herb butter & smoked salt.</p><div class="food-bottom"><span class="food-price">RM 30</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1452195100486-9cc805987862?w=600&q=80" alt="Cheese & Meat Platter" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 80</span></div><div class="food-body"><div class="food-name">Cheese &amp; Meat Platter</div><p class="food-desc">Curated artisan cheeses, cured meats, olives, honeycomb & crackers.</p><div class="food-bottom"><span class="food-price">RM 80</span><button class="food-add">Order</button></div></div></div>
+      </div>
+    </div>
+
+    <!-- MAINS -->
+    <div class="menu-panel" id="panel-mains">
+      <div class="food-grid">
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1558030006-450675393462?w=600&q=80" alt="Wagyu Ribeye" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 250</span></div><div class="food-body"><div class="food-name">Wagyu Ribeye</div><p class="food-desc">A5 wagyu, 300g, charcoal-grilled, truffle jus & roasted garlic.</p><div class="food-bottom"><span class="food-price">RM 250</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Angus Beef Burger" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 65</span></div><div class="food-body"><div class="food-name">Angus Beef Burger</div><p class="food-desc">Double smashed patties, aged cheddar, bacon jam & brioche bun.</p><div class="food-bottom"><span class="food-price">RM 65</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="Grilled Lamb Chops" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 180</span></div><div class="food-body"><div class="food-name">Grilled Lamb Chops</div><p class="food-desc">Herb-crusted New Zealand rack, rosemary jus & mint chimichurri.</p><div class="food-bottom"><span class="food-price">RM 180</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=80" alt="Blackened Sea Bass" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 145</span></div><div class="food-body"><div class="food-name">Blackened Sea Bass</div><p class="food-desc">Cajun-spiced fillet, lemon beurre blanc, asparagus & mash.</p><div class="food-bottom"><span class="food-price">RM 145</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Foie Gras with Brioche" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 120</span></div><div class="food-body"><div class="food-name">Foie Gras with Brioche</div><p class="food-desc">Pan-seared foie gras, fig compote, toasted brioche & port reduction.</p><div class="food-bottom"><span class="food-price">RM 120</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&q=80" alt="BBQ Baby Back Ribs" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 130</span></div><div class="food-body"><div class="food-name">BBQ Baby Back Ribs</div><p class="food-desc">Slow-smoked pork ribs, house BBQ glaze, coleslaw & cornbread.</p><div class="food-bottom"><span class="food-price">RM 130</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1432139509613-5c4255a1d197?w=600&q=80" alt="Pan-Seared Duck Breast" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 150</span></div><div class="food-body"><div class="food-name">Pan-Seared Duck Breast</div><p class="food-desc">Crispy skin duck, cherry reduction, sweet potato purée & greens.</p><div class="food-bottom"><span class="food-price">RM 150</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=600&q=80" alt="Truffle Mushroom Risotto" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 90</span></div><div class="food-body"><div class="food-name">Truffle Mushroom Risotto</div><p class="food-desc">Arborio rice, wild mushrooms, truffle oil, mascarpone & parmesan.</p><div class="food-bottom"><span class="food-price">RM 90</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&q=80" alt="Surf & Turf" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 300</span></div><div class="food-body"><div class="food-name">Surf &amp; Turf</div><p class="food-desc">Grilled lobster tail + wagyu tenderloin, garlic butter & béarnaise.</p><div class="food-bottom"><span class="food-price">RM 300</span><button class="food-add">Order</button></div></div></div>
+
+        <div class="food-card reveal"><div class="food-img"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&q=80" alt="Veggie Gourmet Burger" loading="lazy"><div class="food-img-overlay"></div><span class="food-price-tag">RM 60</span></div><div class="food-body"><div class="food-name">Veggie Gourmet Burger</div><p class="food-desc">Beetroot & quinoa patty, avocado, pickled onion & vegan aioli.</p><div class="food-bottom"><span class="food-price">RM 60</span><button class="food-add">Order</button></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-line"></div>
+
+<!-- COCKTAILS -->
+<section id="cocktails" class="cocktails-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Crafted by Hand</div>
+      <h2 class="section-title">Signature Cocktails</h2>
+      <div class="section-line"></div>
+      <p class="section-desc">Bold concoctions and classic recipes, shaken and stirred 42 floors above the city.</p>
+    </div>
+
+    <div class="cocktail-grid">
+      <div class="cocktail-card reveal"><div class="cocktail-img"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500&q=80" alt="Midnight Martini" loading="lazy"></div><div class="cocktail-info"><div class="cocktail-name">Midnight Martini</div><div class="cocktail-price">RM 45</div></div></div>
+
+      <div class="cocktail-card reveal"><div class="cocktail-img"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?w=500&q=80" alt="Sunset Boulevard" loading="lazy"></div><div class="cocktail-info"><div class="cocktail-name">Sunset Boulevard</div><div class="cocktail-price">RM 42</div></div></div>
+
+      <div class="cocktail-card reveal"><div class="cocktail-img"><img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=500&q=80" alt="Golden Negroni" loading="lazy"></div><div class="cocktail-info"><div class="cocktail-name">Golden Negroni</div><div class="cocktail-price">RM 50</div></div></div>
+
+      <div class="cocktail-card reveal"><div class="cocktail-img"><img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500&q=80" alt="Smoky Old Fashioned" loading="lazy"></div><div class="cocktail-info"><div class="cocktail-name">Smoky Old Fashioned</div><div class="cocktail-price">RM 48</div></div></div>
+
+      <div class="cocktail-card reveal"><div class="cocktail-img"><img src="https://images.unsplash.com/photo-1546171753-97d7676e4602?w=500&q=80" alt="Citrus Mojito" loading="lazy"></div><div class="cocktail-info"><div class="cocktail-name">Citrus Mojito</div><div class="cocktail-price">RM 40</div></div></div>
+
+      <div class="cocktail-card reveal"><div class="cocktail-img"><img src="https://images.unsplash.com/photo-1609951651556-5334e2706168?w=500&q=80" alt="Neon Sangria" loading="lazy"></div><div class="cocktail-info"><div class="cocktail-name">Neon Sangria</div><div class="cocktail-price">RM 38</div></div></div>
+
+      <div class="cocktail-card reveal"><div class="cocktail-img"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&q=80" alt="Espresso Martini" loading="lazy"></div><div class="cocktail-info"><div class="cocktail-name">Espresso Martini</div><div class="cocktail-price">RM 45</div></div></div>
+
+      <div class="cocktail-card reveal"><div class="cocktail-img"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?w=500&q=80" alt="Tokyo Mule" loading="lazy"></div><div class="cocktail-info"><div class="cocktail-name">Tokyo Mule</div><div class="cocktail-price">RM 42</div></div></div>
+    </div>
+
+    <!-- WINES & SPIRITS -->
+    <div class="section-header reveal" style="margin-top:80px">
+      <div class="section-eyebrow">Cellar Selection</div>
+      <h2 class="section-title">Wines, Spirits &amp; More</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="wine-grid reveal">
+      <div class="wine-item"><div><div class="wine-name">Chardonnay</div><div class="wine-type">White · Full-bodied</div></div><div class="wine-price">RM 38 / glass</div></div>
+      <div class="wine-item"><div><div class="wine-name">Pinot Noir</div><div class="wine-type">Red · Light-bodied</div></div><div class="wine-price">RM 45 / glass</div></div>
+      <div class="wine-item"><div><div class="wine-name">Cabernet Sauvignon</div><div class="wine-type">Red · Bold</div></div><div class="wine-price">RM 55 / glass</div></div>
+      <div class="wine-item"><div><div class="wine-name">Champagne Brut</div><div class="wine-type">Sparkling · Prestige Cuvée</div></div><div class="wine-price">RM 180 / bottle</div></div>
+      <div class="wine-item"><div><div class="wine-name">Whiskey Flight</div><div class="wine-type">3 × 30ml · Curated Selection</div></div><div class="wine-price">RM 120</div></div>
+      <div class="wine-item"><div><div class="wine-name">Premium Tequila</div><div class="wine-type">Añejo · Barrel-Aged</div></div><div class="wine-price">RM 150</div></div>
+      <div class="wine-item"><div><div class="wine-name">Sparkling Lemonade</div><div class="wine-type">Non-Alcoholic · Citrus</div></div><div class="wine-price">RM 20</div></div>
+      <div class="wine-item"><div><div class="wine-name">Virgin Mojito</div><div class="wine-type">Non-Alcoholic · Mint & Lime</div></div><div class="wine-price">RM 22</div></div>
+      <div class="wine-item"><div><div class="wine-name">Fruit Infused Water</div><div class="wine-type">Non-Alcoholic · Seasonal Fruits</div></div><div class="wine-price">RM 18</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="neon-line"></div>
+
+<!-- EVENTS -->
+<section id="events" class="events-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">What's On</div>
+      <h2 class="section-title">Events &amp; Live Music</h2>
+      <div class="section-line"></div>
+      <p class="section-desc">From sunset jazz to midnight DJ sets — there's always something happening at SORA.</p>
+    </div>
+    <div class="events-grid">
+      <div class="event-card reveal">
+        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&q=80" alt="Live Jazz Night" loading="lazy">
+        <div class="event-overlay"></div>
+        <div class="event-body">
+          <span class="event-badge">Every Friday</span>
+          <h3 class="event-title">Sunset Jazz Sessions</h3>
+          <p class="event-desc">Live jazz trio from 7 PM. Complimentary house cocktail with dinner reservations.</p>
+        </div>
+      </div>
+      <div class="event-card reveal">
+        <img src="https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?w=700&q=80" alt="DJ Night" loading="lazy">
+        <div class="event-overlay"></div>
+        <div class="event-body">
+          <span class="event-badge">Every Saturday</span>
+          <h3 class="event-title">Rooftop After Dark</h3>
+          <p class="event-desc">Resident DJ spinning deep house & lounge beats from 10 PM. Bottle service available.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reserve" class="reserve-section">
+  <div class="reserve-bg"></div>
+  <div class="reserve-overlay"></div>
+  <div class="reserve-content reveal">
+    <div class="section-eyebrow" style="color:var(--neon)">Book Your Experience</div>
+    <h2>Reserve Your Table</h2>
+    <p>Secure the best seat in the city. Walk-ins welcome, but reservations are recommended for an elevated experience.</p>
+    <a href="tel:+60320004242" class="btn-gold" style="margin-right:12px">📞 Call Now</a>
+    <a href="#" class="btn-ghost" style="border-color:var(--gold);color:var(--gold)">Book Online</a>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="container">
+    <div class="loc-grid reveal">
+      <div class="loc-info">
+        <h2>Find Us</h2>
+        <div class="loc-divider"></div>
+        <div class="loc-item"><div class="loc-icon">📍</div><div><div class="loc-label">Address</div><div class="loc-text">Level 42, Tower One<br>City Center, 50088<br>Kuala Lumpur, Malaysia</div></div></div>
+        <div class="loc-item"><div class="loc-icon">🕐</div><div><div class="loc-label">Opening Hours</div><div class="loc-text">Tue – Thu: 5:00 PM – 1:00 AM<br>Fri – Sat: 5:00 PM – 2:00 AM<br>Sun: 4:00 PM – 12:00 AM<br>Mon: Closed</div></div></div>
+        <div class="loc-item"><div class="loc-icon">📞</div><div><div class="loc-label">Reservations</div><div class="loc-text">+60 3-2000 4242<br>reserve@sora-kl.com</div></div></div>
+        <div class="loc-item"><div class="loc-icon">👔</div><div><div class="loc-label">Dress Code</div><div class="loc-text">Smart casual. No flip-flops or shorts.</div></div></div>
+      </div>
+      <div class="map-placeholder">
+        <div class="map-grid"></div>
+        <div class="map-pin">🏙️</div>
+        <div class="map-text">SORA Rooftop</div>
+        <div class="map-sub">Level 42, City Center KL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">SORA</div>
+  <div class="footer-tagline">Rooftop Bar & Grill · Level 42 · Kuala Lumpur</div>
+  <ul class="footer-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#cocktails">Cocktails</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#reserve">Reservations</a></li>
+    <li><a href="#location">Location</a></li>
+  </ul>
+  <div class="footer-socials">
+    <a href="#" aria-label="Instagram">📷</a>
+    <a href="#" aria-label="Facebook">📘</a>
+    <a href="#" aria-label="TikTok">🎵</a>
+    <a href="#" aria-label="Twitter">🐦</a>
+  </div>
+  <div class="footer-copy">&copy; 2025 SORA Rooftop Bar & Grill. All rights reserved. | Kuala Lumpur, Malaysia</div>
+</footer>
+
+<script>
+// Mobile nav
+const toggle=document.getElementById('mobileToggle'),links=document.getElementById('navLinks');
+toggle.addEventListener('click',()=>{const o=links.style.display==='flex';links.style.cssText=o?'':'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(8,11,20,.97);padding:20px;gap:8px;border-bottom:1px solid var(--gold-dim);backdrop-filter:blur(20px)';toggle.textContent=o?'☰':'✕'});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{if(innerWidth<=900){links.style.display='none';toggle.textContent='☰'}}));
+
+// Sticky nav
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+
+// Menu tabs
+function showPanel(id,btn){
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  btn.classList.add('active');
+  // Re-observe reveals in new panel
+  document.querySelectorAll('#panel-'+id+' .reveal:not(.visible)').forEach(el=>revealObs.observe(el));
+}
+
+// Scroll reveal
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}})
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+</script>
+</body>
+</html>
