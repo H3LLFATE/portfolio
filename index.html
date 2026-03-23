@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Website Showcase</title>
+  <link rel="stylesheet" href="css/showcase.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+
+  <div class="app mode-laptop" id="app">
+    
+    <!-- DEVICE SELECTOR -->
+    <div class="device-selector">
+      <div class="device-trigger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="device-menu">
+        <div class="menu-item" id="item-phone" onclick="setDevice('phone')">Phone View</div>
+        <div class="menu-item active" id="item-laptop" onclick="setDevice('laptop')">Laptop View</div>
+        <div class="menu-item" id="item-desktop" onclick="setDevice('desktop')">Desktop View</div>
+      </div>
+    </div>
+
+    <!-- EDGE NAVIGATION -->
+    <div class="edge-nav edge-nav-left" onclick="navigate(-1)">
+      <div class="nav-bubble">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </div>
+    </div>
+    
+    <div class="edge-nav edge-nav-right" onclick="navigate(1)">
+      <div class="nav-bubble">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+    </div>
+
+    <!-- MAIN DISPLAY -->
+    <div class="display-area">
+      <div class="phone-aura" id="deviceAura"></div>
+      <div class="frame-container" id="frameContainer">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- NAVIGATION DOTS -->
+    <div class="dots-container" id="dotsContainer">
+      <!-- Rendered by JS -->
+    </div>
+
+  </div>
+
+  <script src="js/showcase.js"></script>
+</body>
+</html>
