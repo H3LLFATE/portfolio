@@ -233,6 +233,7 @@ iframe {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  pointer-events: none; /* Let clicks pass through to iframe content */
 }
 
 .edge-nav-left { left: 0; }
@@ -253,6 +254,7 @@ iframe {
   transform: translateX(var(--offset)) scale(0.8);
   transition: 0.4s var(--transition);
   color: white;
+  pointer-events: auto; /* Only capture clicks on the arrow bubble */
 }
 
 .edge-nav-left .nav-bubble { --offset: -20px; }
@@ -264,10 +266,10 @@ iframe {
 }
 
 .is-mobile-device .edge-nav .nav-bubble {
-  opacity: 0.6;
-  transform: scale(0.85);
-  width: 50px;
-  height: 50px;
+  opacity: 0.2; /* Very transparent as requested */
+  transform: scale(0.7); /* Smaller as requested */
+  width: 44px;
+  height: 44px;
 }
 
 .nav-bubble svg {
@@ -312,10 +314,10 @@ iframe {
 /* ─── MOBILE DEVICE OVERRIDES ─── */
 .app.is-mobile-device .frame-container {
   width: 100vw !important;
-  height: calc(100vh - 120px) !important;
-  margin-top: 60px;
+  height: 100vh !important;
+  margin-top: 0; /* Header removed */
   max-width: 100vw !important;
-  max-height: calc(100vh - 120px) !important;
+  max-height: 100vh !important;
   border: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
@@ -326,10 +328,10 @@ iframe {
   display: none !important;
 }
 
-/* Hide arrows and dots only on REAL mobile devices (per user request) */
+/* Navigation arrows and dots are now VISIBLE on phone as requested */
 .app.is-real-mobile .edge-nav,
 .app.is-real-mobile .dots-container {
-  display: none !important;
+  display: flex !important;
 }
 
 /* Ensure dots are large enough for fingers */
@@ -360,7 +362,7 @@ iframe {
 }
 
 .app.is-mobile-device .mobile-header {
-  display: flex;
+  display: none; /* Fully removed as requested */
 }
 
 .mobile-title {
@@ -390,8 +392,7 @@ iframe {
 }
 
 .app.is-real-mobile .swipe-hint {
-  display: block;
-  animation: fadeInOut 3s infinite;
+  display: none !important; /* Removed as requested */
 }
 
 @keyframes fadeInOut {

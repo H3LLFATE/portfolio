@@ -50,3 +50,8 @@ As requested, for all future chats and tasks, the AI will document the following
 - **Why the change is being made:** Managing local copies of every website within the showcase repository was becoming cumbersome. Every small change to a sub-site required a commit to the showcase repo.
 - **What the problem affected:** Increased repository size and duplicate maintenance efforts. If a site was updated on its own Vercel deployment, the showcase remained outdated.
 - **What the fix affected:** Updated `js/showcase.js` to point directly to the live Vercel URLs of each project. This allows the showcase to always display the most current version of each site automatically. The local `sites/` directory was removed to streamline the project.
+
+## 10. Mobile Navigation & Header Refinement
+- **Why the change is being made:** The swipe navigation was unreliable for some users, and the mobile restaurant header was taking up too much valuable screen space.
+- **What the problem affected:** Users struggled to navigate between showcased sites, and the iframe content felt cramped on mobile screens.
+- **What the fix affected:** `showcase.css` and `showcase.js` to remove the mobile header, eliminate the "Slide to Switch" hint, and restore navigation arrows/dots with a transparent, small design that prioritizes screen space and precise touch interaction.
