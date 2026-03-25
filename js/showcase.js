@@ -68,7 +68,9 @@ attachTouchListeners(document);
 
 /* ─── INITIALIZATION ─── */
 function init() {
+  detectRealMobile();
   createMobileHeader();
+  createSwipeHint();
   buildDots();
   updateView();
   
@@ -79,12 +81,33 @@ function init() {
   });
 }
 
+function detectRealMobile() {
+  const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  const isMobi = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+  
+  if (isTouch && isMobi) {
+    app.classList.add('is-real-mobile');
+  }
+}
+
 function createMobileHeader() {
   if (document.querySelector('.mobile-header')) return;
   const header = document.createElement('div');
   header.className = 'mobile-header';
   header.innerHTML = '<span class="mobile-title" id="mobileTitle"></span>';
+  
+  // Attach swipe listeners directly to header to ensure they work on mobile
+  attachTouchListeners(header);
+  
   app.appendChild(header);
+}
+
+function createSwipeHint() {
+  if (document.querySelector('.swipe-hint')) return;
+  const hint = document.createElement('div');
+  hint.className = 'swipe-hint';
+  hint.textContent = 'Slide to Switch';
+  app.appendChild(hint);
 }
 
 /* ─── NAVIGATION ─── */

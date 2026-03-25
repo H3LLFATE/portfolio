@@ -326,6 +326,12 @@ iframe {
   display: none !important;
 }
 
+/* Hide arrows and dots only on REAL mobile devices (per user request) */
+.app.is-real-mobile .edge-nav,
+.app.is-real-mobile .dots-container {
+  display: none !important;
+}
+
 /* Ensure dots are large enough for fingers */
 .app.is-mobile-device .dot {
   width: 12px;
@@ -364,5 +370,32 @@ iframe {
   text-transform: uppercase;
   color: var(--accent);
   opacity: 0.8;
+}
+
+/* SWIPE INSTRUCTION */
+.swipe-hint {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: var(--accent-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.5s;
+  display: none;
+  z-index: 1001;
+}
+
+.app.is-real-mobile .swipe-hint {
+  display: block;
+  animation: fadeInOut 3s infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.4; }
 }
 
