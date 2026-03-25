@@ -13,6 +13,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -22,6 +23,7 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  position: fixed; /* Prevent bounce scrolling on mobile */
 }
 
 /* ─── BACKGROUND ─── */
@@ -261,6 +263,13 @@ iframe {
   transform: translateX(0) scale(1);
 }
 
+.is-mobile-device .edge-nav .nav-bubble {
+  opacity: 0.6;
+  transform: scale(0.85);
+  width: 50px;
+  height: 50px;
+}
+
 .nav-bubble svg {
   width: 24px;
   height: 24px;
@@ -303,16 +312,57 @@ iframe {
 /* ─── MOBILE DEVICE OVERRIDES ─── */
 .app.is-mobile-device .frame-container {
   width: 100vw !important;
-  height: 100vh !important;
+  height: calc(100vh - 120px) !important;
+  margin-top: 60px;
   max-width: 100vw !important;
-  max-height: 100vh !important;
+  max-height: calc(100vh - 120px) !important;
   border: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
 }
+
 .app.is-mobile-device .device-selector,
-.app.is-mobile-device .edge-nav,
 .app.is-mobile-device .phone-aura {
   display: none !important;
+}
+
+/* Ensure dots are large enough for fingers */
+.app.is-mobile-device .dot {
+  width: 12px;
+  height: 12px;
+}
+.app.is-mobile-device .dot.active {
+  width: 32px;
+}
+
+/* PREMIUM MOBILE HEADER */
+.mobile-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+}
+
+.app.is-mobile-device .mobile-header {
+  display: flex;
+}
+
+.mobile-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.8;
 }
 

@@ -49,13 +49,17 @@ function handleSwipe() {
 }
 
 function attachTouchListeners(doc) {
-  doc.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-  doc.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  }, { passive: true });
+  try {
+    doc.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    doc.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+  } catch (e) {
+    console.warn("Could not attach touch listeners", e);
+  }
 }
 
 // Attach to main document
@@ -64,6 +68,7 @@ attachTouchListeners(document);
 
 /* ─── INITIALIZATION ─── */
 function init() {
+  createMobileHeader();
   buildDots();
   updateView();
   
@@ -72,6 +77,14 @@ function init() {
     if (e.shiftKey && e.key === 'ArrowRight') navigate(1);
     if (e.shiftKey && e.key === 'ArrowLeft') navigate(-1);
   });
+}
+
+function createMobileHeader() {
+  if (document.querySelector('.mobile-header')) return;
+  const header = document.createElement('div');
+  header.className = 'mobile-header';
+  header.innerHTML = '<span class="mobile-title" id="mobileTitle"></span>';
+  app.appendChild(header);
 }
 
 /* ─── NAVIGATION ─── */
@@ -124,6 +137,12 @@ function updateView() {
 
   // Update Dots
   updateDots();
+
+  // Update Mobile Title
+  const mobileTitle = document.getElementById('mobileTitle');
+  if (mobileTitle) {
+    mobileTitle.textContent = demo.name;
+  }
 }
 
 function showPlaceholder() {
